@@ -7,7 +7,7 @@ let service1 = prompt("Какой дополнительный тип услуг
 let servicePrice1 = prompt("Сколько это будет стоить?");
 let service2 = prompt("Какой ещё дополнительный тип услуги Вам нужен?");
 let servicePrice2 = prompt("Сколько так же это будет стоить?");
-let fullPrice = parseInt(screenPrice) + parseInt(servicePrice1) + parseInt(servicePrice2);//любое число (сколько хотите заработать)
+let fullPrice = parseFloat(screenPrice) + parseFloat(servicePrice1) + parseFloat(servicePrice2);//любое число (сколько хотите заработать)
 let servicePercentPrice = Math.ceil(fullPrice - (fullPrice * 0.30)); //30% посреднику
 /*console.log(typeof title);
 console.log(typeof fullPrice);
@@ -22,7 +22,7 @@ console.log(screens.toLowerCase().split(", "));
 console.log("Процент отката посреднику за работ: " + fullPrice * (rollback/100));*/
 console.log('Название проекта: ' + title);
 console.log(screens.split(', '));
-console.log('Стоимость работы: ' + parseInt(screenPrice));
+console.log('Стоимость работы: ' + parseFloat(screenPrice));
 switch (adaptive) {
     case true:
         console.log('Адаптив должен быть!');
@@ -35,8 +35,8 @@ switch (adaptive) {
 servicePrice1 === '' ? servicePrice1 = 0 : servicePrice1;
 servicePrice2 === '' ? servicePrice2 = 0 : servicePrice2;
 //________________________
-console.log('Дополнительный тип услуги: ' + service1 + ". Данная услуга будет стоить " + parseInt(servicePrice1));
-console.log('Ещё один дополнительный тип услуги: ' + service2 + ". Данная услуга будет стоить " + parseInt(servicePrice2));
+console.log('Дополнительный тип услуги: ' + service1 + ". Данная услуга будет стоить " + parseFloat(servicePrice1));
+console.log('Ещё один дополнительный тип услуги: ' + service2 + ". Данная услуга будет стоить " + parseFloat(servicePrice2));
 
 
 console.log("fullPrice: " + fullPrice);
