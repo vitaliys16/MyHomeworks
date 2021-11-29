@@ -55,5 +55,3 @@ switch(true) {
     default: 
         console.log('Что то пошло не так'); 
 }
-console.log(typeof servicePrice1);
-console.log(typeof screenPrice);
