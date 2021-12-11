@@ -7,7 +7,7 @@ const appData = {
     service1: '', 
     service2: '', 
     fullPrice: 0, 
-    servicePercentPrice: 0,  //30% посреднику
+    servicePercentPrice: 0, //30% посреднику
     allServicePrices: 0, 
     isNumber: function(num) {
         return !isNaN(parseFloat(num)) && isFinite(num); //проверка на число
