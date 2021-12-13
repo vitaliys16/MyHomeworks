@@ -4,7 +4,7 @@ const appData = {
     screenPrice: 0, 
     adaptive: true, 
     rollback: 30, //любое число от 1 до 100
-    services: {},
+    services: [],
     fullPrice: 0, 
     servicePercentPrice: 0, //30% посреднику
     allServicePrices: 0, 
@@ -43,16 +43,19 @@ const appData = {
                 price = prompt("Сколько это будет стоить?");
             } while (!appData.isNumber(price));
             appData.services[name] = +price;
+
+            appData.services.push({id: i, name: 'Услуга №'+ (i+1) + ': ' + name, price: price});
         }
 
         appData.adaptive = confirm("Нужен ли адаптив на сайте?"); //булевое значение
     },
     addPrices: function() {
-        for (let screen of appData.screens) {
-            appData.screenPrice += +screen.price; //считаем все price из объектов массива screens
-        }
-        for (let key in appData.services) {
-            appData.allServicePrices += appData.services[key];  //в свойство allServicePrices попадет сумма всех значений из объекта appData.services  
+        appData.screenPrice = appData.screens.reduce(function(sum, item){
+            return sum += +item.price;
+        }, 0);
+
+        for (let key of appData.services) {
+            appData.allServicePrices += +key.price;  //в свойство allServicePrices попадет сумма всех значений из объекта appData.services  
         }
     },
 
