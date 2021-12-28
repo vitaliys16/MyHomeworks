@@ -27,7 +27,7 @@ const appData = {
     screens: [], 
     screenPrice: 0, 
     adaptive: true, 
-    rollback: 30, //любое число от 1 до 100
+    rollback: 0, //любое число от 1 до 100
     servicesPercent: {},
     servicesNumber: {},
     fullPrice: 0, 
@@ -37,14 +37,7 @@ const appData = {
     count: 0,
     init: function() {
         appData.addTitle();
-        startBtn.addEventListener('click', function() {
-            if (document.querySelector('.screen > .main-controls__input > input').value !== '' && document.querySelector('.screen > .main-controls__select > select').value !== '') {
-                appData.start();
-            } else {
-                alert('Ничего не указано');
-                console.log(appData.screens);
-            }
-        }); //при нажатии на кнопку startBtn вызываем метод start
+        startBtn.addEventListener('click', appData.start);//при нажатии на кнопку startBtn вызываем метод start
         buttonPlus.addEventListener('click', appData.addScreenBlock);
     },
     addTitle: function() {
@@ -55,23 +48,31 @@ const appData = {
         spanRange.textContent = event.target.value + '%'; //подставляем значение в текст тега span
         appData.rollback = event.target.value; //заносим значение в rollback
     },
+    refreshVariables: function () {
+		appData.screens = [];
+		appData.screenPrice = 0;
+		appData.screenNumber = 0;
+		appData.servicesPercent = {};
+		appData.servicesNumber = {};
+		appData.servicePricesPercent = 0;
+		appData.servicePricesNumber = 0;
+	},
     start: function() {
             appData.addScreens();
+            if (
+			!appData.screens.find((screen) => {
+				return screen.name === "Тип экранов" || screen.price <= 0;
+			})
+		) {
             appData.addServices();
             appData.addPrices();
-    /* 
-            appData.getServicePercentPrices();
-            switch (appData.adaptive) {
-                case true:
-                    console.log('Адаптив должен быть!');
-                    break
-                default: 
-                    console.log('Адаптива не будет');
-            }
-            appData.logger();
-    */
             appData.showResult();
             console.log(appData.screens);
+            appData.refreshVariables();
+        } else {
+            alert("Один из типов экрана или количество заполнено некорректно");
+			appData.refreshVariables();
+        }       
     },
     showResult: function() {
         alert('showResult');
