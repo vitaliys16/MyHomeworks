@@ -51,6 +51,7 @@ const appData = {
         this.rollback = event.target.value; //заносим значение в rollback
     },
     refreshVariables: function () {
+        this.rollback = 0;
 		this.screens = [];
 		this.screenPrice = 0;
 		this.screenNumber = 0;
