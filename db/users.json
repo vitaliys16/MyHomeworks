@@ -1,0 +1,14 @@
+[
+    {
+        "id" : 0,
+        "user": "Alex",
+        "age": 23,
+        "role": "back-end"
+    }, 
+    {
+        "id" : 1,
+        "user": "VITALIK",
+        "age": 25,
+        "role": "front-end"
+    }
+]
